@@ -110,14 +110,6 @@
         "color": "#DDAA99"
     },
     {
-        "id": "38ce0b5c.df06cc",
-        "type": "ui_tab",
-        "name": "Alle Lampen an",
-        "icon": "dashboard",
-        "disabled": false,
-        "hidden": false
-    },
-    {
         "id": "994d7b2f.27ec2",
         "type": "ui_base",
         "theme": {
@@ -480,21 +472,15 @@
         "id": "ba12af24.7d9c2",
         "type": "inject",
         "z": "163e312f.f48fdf",
-        "name": "masterNameKuechenmusik",
-        "props": [
-            {
-                "p": "payload"
-            }
-        ],
+        "name": "on Startup",
+        "props": [],
         "repeat": "",
         "crontab": "",
         "once": true,
         "onceDelay": 0.1,
         "topic": "",
-        "payload": "musiktruhe",
-        "payloadType": "str",
-        "x": 180,
-        "y": 620,
+        "x": 110,
+        "y": 240,
         "wires": [
             [
                 "917859d1.cfead8"
@@ -505,14 +491,14 @@
         "id": "917859d1.cfead8",
         "type": "change",
         "z": "163e312f.f48fdf",
-        "name": "",
+        "name": "Dreher = Musiktruhe",
         "rules": [
             {
                 "t": "set",
                 "p": "dreherMaster",
                 "pt": "global",
-                "to": "payload",
-                "tot": "msg"
+                "to": "musiktruhe",
+                "tot": "str"
             }
         ],
         "action": "",
@@ -520,8 +506,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 480,
-        "y": 620,
+        "x": 410,
+        "y": 240,
         "wires": [
             []
         ]
@@ -659,102 +645,13 @@
         ]
     },
     {
-        "id": "bc4be059.38d7c8",
-        "type": "mqtt in",
-        "z": "e1ebf45b.e10b2",
-        "name": "",
-        "topic": "zigbee2mqtt/gesha1",
-        "qos": "2",
-        "datatype": "auto",
-        "broker": "f02afc5d.26a6",
-        "x": 150,
-        "y": 100,
-        "wires": [
-            [
-                "331ba344.a8098c"
-            ]
-        ]
-    },
-    {
-        "id": "331ba344.a8098c",
-        "type": "json",
-        "z": "e1ebf45b.e10b2",
-        "name": "",
-        "property": "payload",
-        "action": "",
-        "pretty": false,
-        "x": 140,
-        "y": 180,
-        "wires": [
-            [
-                "4328f709.df0fb"
-            ]
-        ]
-    },
-    {
-        "id": "8bbc2f17.f313f8",
-        "type": "mqtt out",
-        "z": "e1ebf45b.e10b2",
-        "name": "Set Oles Deckenlampe",
-        "topic": "zigbee2mqtt/oleDeckenlicht/set",
-        "qos": "",
-        "retain": "",
-        "broker": "f02afc5d.26a6",
-        "x": 810,
-        "y": 140,
-        "wires": []
-    },
-    {
-        "id": "4328f709.df0fb",
-        "type": "change",
-        "z": "e1ebf45b.e10b2",
-        "name": "",
-        "rules": [
-            {
-                "t": "move",
-                "p": "payload.action",
-                "pt": "msg",
-                "to": "payload.state",
-                "tot": "msg"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 510,
-        "y": 80,
-        "wires": [
-            [
-                "c8a0c402.7bd87"
-            ]
-        ]
-    },
-    {
-        "id": "c8a0c402.7bd87",
-        "type": "json",
-        "z": "e1ebf45b.e10b2",
-        "name": "",
-        "property": "payload",
-        "action": "",
-        "pretty": false,
-        "x": 640,
-        "y": 220,
-        "wires": [
-            [
-                "8bbc2f17.f313f8"
-            ]
-        ]
-    },
-    {
         "id": "4500d5ac.ed588c",
         "type": "comment",
         "z": "163e312f.f48fdf",
         "name": "Lautstärkeregler",
         "info": "",
-        "x": 110,
-        "y": 280,
+        "x": 100,
+        "y": 200,
         "wires": []
     },
     {
@@ -763,8 +660,8 @@
         "z": "163e312f.f48fdf",
         "name": "Espressobar",
         "info": "",
-        "x": 100,
-        "y": 740,
+        "x": 90,
+        "y": 620,
         "wires": []
     },
     {
@@ -776,8 +673,8 @@
         "qos": "2",
         "datatype": "auto",
         "broker": "f02afc5d.26a6",
-        "x": 100,
-        "y": 800,
+        "x": 130,
+        "y": 960,
         "wires": [
             [
                 "d2f3e1fe.fe229"
@@ -792,38 +689,11 @@
         "property": "payload",
         "action": "",
         "pretty": false,
-        "x": 90,
-        "y": 840,
+        "x": 120,
+        "y": 1000,
         "wires": [
             [
                 "e94b19d1.7777f8"
-            ]
-        ]
-    },
-    {
-        "id": "ce5fec89.cbf61",
-        "type": "change",
-        "z": "163e312f.f48fdf",
-        "name": "",
-        "rules": [
-            {
-                "t": "move",
-                "p": "payload.action",
-                "pt": "msg",
-                "to": "payload.state",
-                "tot": "msg"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 520,
-        "y": 780,
-        "wires": [
-            [
-                "50ec9803.99c0b8"
             ]
         ]
     },
@@ -835,8 +705,8 @@
         "property": "payload",
         "action": "",
         "pretty": false,
-        "x": 750,
-        "y": 800,
+        "x": 960,
+        "y": 900,
         "wires": [
             [
                 "cd1a37f.9eb8ec8"
@@ -847,13 +717,13 @@
         "id": "ef54e2ff.6eb148",
         "type": "mqtt out",
         "z": "163e312f.f48fdf",
-        "name": "CoffeePower",
-        "topic": "zigbee2mqtt/coffeePower/set",
+        "name": "mrCoffee",
+        "topic": "zigbee2mqtt/mrCoffee/set",
         "qos": "",
         "retain": "",
         "broker": "f02afc5d.26a6",
-        "x": 750,
-        "y": 880,
+        "x": 940,
+        "y": 1120,
         "wires": []
     },
     {
@@ -889,13 +759,15 @@
         "repair": false,
         "outputs": 4,
         "x": 290,
-        "y": 800,
+        "y": 1000,
         "wires": [
             [
-                "ce5fec89.cbf61"
+                "39a8ac00.76c3ec",
+                "f19b00a2.4fd4e"
             ],
             [
-                "ce5fec89.cbf61"
+                "6507ce09.37df38",
+                "a74e1e73.d2355"
             ],
             [
                 "8c378b13.69dc98"
@@ -913,8 +785,8 @@
         "property": "payload",
         "action": "",
         "pretty": false,
-        "x": 740,
-        "y": 920,
+        "x": 930,
+        "y": 1080,
         "wires": [
             [
                 "ef54e2ff.6eb148"
@@ -930,15 +802,15 @@
         "qos": "",
         "retain": "",
         "broker": "f02afc5d.26a6",
-        "x": 750,
-        "y": 760,
+        "x": 980,
+        "y": 940,
         "wires": []
     },
     {
         "id": "8c378b13.69dc98",
         "type": "change",
         "z": "163e312f.f48fdf",
-        "name": "LongOn",
+        "name": "On",
         "rules": [
             {
                 "t": "set",
@@ -953,8 +825,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 460,
-        "y": 820,
+        "x": 770,
+        "y": 1080,
         "wires": [
             [
                 "a365f4e1.a0ec88"
@@ -965,7 +837,7 @@
         "id": "6507ce09.37df38",
         "type": "change",
         "z": "163e312f.f48fdf",
-        "name": "LongOff",
+        "name": "Off",
         "rules": [
             {
                 "t": "set",
@@ -980,8 +852,8 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 460,
-        "y": 860,
+        "x": 770,
+        "y": 1120,
         "wires": [
             [
                 "a365f4e1.a0ec88"
@@ -1052,6 +924,794 @@
         "wires": [
             [
                 "fe604360.43f67"
+            ]
+        ]
+    },
+    {
+        "id": "f19b00a2.4fd4e",
+        "type": "change",
+        "z": "163e312f.f48fdf",
+        "name": "On",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload.state",
+                "pt": "msg",
+                "to": "on",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "payload.brightness",
+                "pt": "msg",
+                "to": "254",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "coffeeLight",
+                "pt": "flow",
+                "to": "254",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 820,
+        "y": 900,
+        "wires": [
+            [
+                "50ec9803.99c0b8"
+            ]
+        ]
+    },
+    {
+        "id": "a74e1e73.d2355",
+        "type": "change",
+        "z": "163e312f.f48fdf",
+        "name": "Off",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload.state",
+                "pt": "msg",
+                "to": "off",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "coffeeLight",
+                "pt": "flow",
+                "to": "0",
+                "tot": "num"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 820,
+        "y": 940,
+        "wires": [
+            [
+                "50ec9803.99c0b8"
+            ]
+        ]
+    },
+    {
+        "id": "39a8ac00.76c3ec",
+        "type": "switch",
+        "z": "163e312f.f48fdf",
+        "name": "Coffee or light",
+        "property": "coffeeLight",
+        "propertyType": "flow",
+        "rules": [
+            {
+                "t": "true"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 560,
+        "y": 1000,
+        "wires": [
+            [
+                "8c378b13.69dc98"
+            ]
+        ]
+    },
+    {
+        "id": "4d177f2d.40da5",
+        "type": "inject",
+        "z": "163e312f.f48fdf",
+        "name": "on Startup",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "1",
+        "topic": "",
+        "payload": "{\"state\":\"\"}",
+        "payloadType": "json",
+        "x": 110,
+        "y": 700,
+        "wires": [
+            [
+                "cabdea5d.eb9be",
+                "5d451161.2ff88"
+            ]
+        ]
+    },
+    {
+        "id": "cabdea5d.eb9be",
+        "type": "mqtt out",
+        "z": "163e312f.f48fdf",
+        "name": "trigger mr Coffee",
+        "topic": "zigbee2mqtt/mrCoffee/get",
+        "qos": "",
+        "retain": "",
+        "broker": "f02afc5d.26a6",
+        "x": 310,
+        "y": 700,
+        "wires": []
+    },
+    {
+        "id": "2c2e60c5.eb0718",
+        "type": "mqtt in",
+        "z": "163e312f.f48fdf",
+        "name": "mrCoffee",
+        "topic": "zigbee2mqtt/mrCoffee",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "f02afc5d.26a6",
+        "x": 80,
+        "y": 760,
+        "wires": [
+            [
+                "4f65d200.6e944"
+            ]
+        ]
+    },
+    {
+        "id": "f440780d.e22758",
+        "type": "switch",
+        "z": "163e312f.f48fdf",
+        "name": "onChange",
+        "property": "payload.state",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "neq",
+                "v": "mrCoffee",
+                "vt": "flow"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 210,
+        "y": 800,
+        "wires": [
+            [
+                "308e6de.2a4f712"
+            ]
+        ]
+    },
+    {
+        "id": "308e6de.2a4f712",
+        "type": "switch",
+        "z": "163e312f.f48fdf",
+        "name": "ON / OFF",
+        "property": "payload.state",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "ON",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "OFF",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 360,
+        "y": 800,
+        "wires": [
+            [
+                "f8ec7d99.40e63"
+            ],
+            [
+                "46f79321.6d06cc"
+            ]
+        ]
+    },
+    {
+        "id": "f7e52a82.8d6d6",
+        "type": "mqtt out",
+        "z": "163e312f.f48fdf",
+        "name": "drahtviehBunt",
+        "topic": "zigbee2mqtt/drahtviehBunt/set",
+        "qos": "",
+        "retain": "",
+        "broker": "f02afc5d.26a6",
+        "x": 1080,
+        "y": 760,
+        "wires": []
+    },
+    {
+        "id": "bc2cf44b.b290c",
+        "type": "change",
+        "z": "163e312f.f48fdf",
+        "name": "gelb",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"color\":{\"rgb\":\"255,0,0\"}, \"brightness\": \"25\"}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 910,
+        "y": 760,
+        "wires": [
+            [
+                "f70a7ae0.651f1"
+            ]
+        ]
+    },
+    {
+        "id": "7f9cd681.805ea",
+        "type": "change",
+        "z": "163e312f.f48fdf",
+        "name": "OFF",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"state\":\"OFF\"}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 910,
+        "y": 800,
+        "wires": [
+            [
+                "f70a7ae0.651f1"
+            ]
+        ]
+    },
+    {
+        "id": "5d451161.2ff88",
+        "type": "change",
+        "z": "163e312f.f48fdf",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "mrCoffee",
+                "pt": "flow",
+                "to": "OFF",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 310,
+        "y": 660,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "4f65d200.6e944",
+        "type": "json",
+        "z": "163e312f.f48fdf",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 70,
+        "y": 800,
+        "wires": [
+            [
+                "f440780d.e22758"
+            ]
+        ]
+    },
+    {
+        "id": "d2f153b5.6ce838",
+        "type": "change",
+        "z": "163e312f.f48fdf",
+        "name": "grün",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"color\":{\"rgb\":\"50,205,50\"}, \"brightness\": \"254\"}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 910,
+        "y": 700,
+        "wires": [
+            [
+                "f70a7ae0.651f1"
+            ]
+        ]
+    },
+    {
+        "id": "eb11c910.f6478",
+        "type": "mqtt in",
+        "z": "e1ebf45b.e10b2",
+        "name": "",
+        "topic": "zigbee2mqtt/gesha1",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "f02afc5d.26a6",
+        "x": 130,
+        "y": 120,
+        "wires": [
+            [
+                "46054ea0.16ced"
+            ]
+        ]
+    },
+    {
+        "id": "46054ea0.16ced",
+        "type": "json",
+        "z": "e1ebf45b.e10b2",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 120,
+        "y": 200,
+        "wires": [
+            [
+                "beb4bc79.b587d8"
+            ]
+        ]
+    },
+    {
+        "id": "e169dc8a.0731d",
+        "type": "mqtt out",
+        "z": "e1ebf45b.e10b2",
+        "name": "Set Oles Deckenlampe",
+        "topic": "zigbee2mqtt/oleDeckenlicht/set",
+        "qos": "",
+        "retain": "",
+        "broker": "f02afc5d.26a6",
+        "x": 960,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "49d4ba62.a6b32c",
+        "type": "json",
+        "z": "e1ebf45b.e10b2",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 900,
+        "y": 120,
+        "wires": [
+            [
+                "e169dc8a.0731d"
+            ]
+        ]
+    },
+    {
+        "id": "3eb0cf7a.551d58",
+        "type": "comment",
+        "z": "e1ebf45b.e10b2",
+        "name": "oles Licht",
+        "info": "",
+        "x": 90,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "beb4bc79.b587d8",
+        "type": "switch",
+        "z": "e1ebf45b.e10b2",
+        "name": "",
+        "property": "payload.action",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "on",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "off",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "brightness_move_up",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "brightness_move_down",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 4,
+        "x": 390,
+        "y": 180,
+        "wires": [
+            [
+                "3d4a9dc5.64827a"
+            ],
+            [
+                "bed68e93.9ea6d8"
+            ],
+            [
+                "432bc1dd.c72f"
+            ],
+            [
+                "7db09227.38d054"
+            ]
+        ]
+    },
+    {
+        "id": "3d4a9dc5.64827a",
+        "type": "change",
+        "z": "e1ebf45b.e10b2",
+        "name": "On",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload.state",
+                "pt": "msg",
+                "to": "on",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 750,
+        "y": 120,
+        "wires": [
+            [
+                "49d4ba62.a6b32c"
+            ]
+        ]
+    },
+    {
+        "id": "bed68e93.9ea6d8",
+        "type": "change",
+        "z": "e1ebf45b.e10b2",
+        "name": "Off",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload.state",
+                "pt": "msg",
+                "to": "off",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 750,
+        "y": 160,
+        "wires": [
+            [
+                "49d4ba62.a6b32c"
+            ]
+        ]
+    },
+    {
+        "id": "432bc1dd.c72f",
+        "type": "link out",
+        "z": "e1ebf45b.e10b2",
+        "name": "coffee on",
+        "links": [
+            "83ad4f4d.ddb798"
+        ],
+        "x": 695,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "83ad4f4d.ddb798",
+        "type": "link in",
+        "z": "163e312f.f48fdf",
+        "name": "coffee on",
+        "links": [
+            "432bc1dd.c72f"
+        ],
+        "x": 575,
+        "y": 1140,
+        "wires": [
+            [
+                "8c378b13.69dc98"
+            ]
+        ]
+    },
+    {
+        "id": "28fecd9a.603242",
+        "type": "link in",
+        "z": "163e312f.f48fdf",
+        "name": "coffee off",
+        "links": [
+            "7db09227.38d054"
+        ],
+        "x": 575,
+        "y": 1180,
+        "wires": [
+            [
+                "6507ce09.37df38"
+            ]
+        ]
+    },
+    {
+        "id": "7db09227.38d054",
+        "type": "link out",
+        "z": "e1ebf45b.e10b2",
+        "name": "coffee off",
+        "links": [
+            "28fecd9a.603242"
+        ],
+        "x": 695,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "f70a7ae0.651f1",
+        "type": "json",
+        "z": "163e312f.f48fdf",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 1050,
+        "y": 720,
+        "wires": [
+            [
+                "f7e52a82.8d6d6"
+            ]
+        ]
+    },
+    {
+        "id": "c2f0a687.88c29",
+        "type": "change",
+        "z": "163e312f.f48fdf",
+        "name": "ON",
+        "rules": [
+            {
+                "t": "set",
+                "p": "mrCoffee",
+                "pt": "flow",
+                "to": "ON",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 790,
+        "y": 700,
+        "wires": [
+            [
+                "d2f153b5.6ce838"
+            ]
+        ]
+    },
+    {
+        "id": "f8ec7d99.40e63",
+        "type": "change",
+        "z": "163e312f.f48fdf",
+        "name": "HEATING",
+        "rules": [
+            {
+                "t": "set",
+                "p": "mrCoffee",
+                "pt": "flow",
+                "to": "HEATING",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 780,
+        "y": 760,
+        "wires": [
+            [
+                "bc2cf44b.b290c",
+                "b6440eba.a71e3",
+                "8a6aaccf.daf26"
+            ]
+        ]
+    },
+    {
+        "id": "46f79321.6d06cc",
+        "type": "change",
+        "z": "163e312f.f48fdf",
+        "name": "OFF",
+        "rules": [
+            {
+                "t": "set",
+                "p": "mrCoffee",
+                "pt": "flow",
+                "to": "OFF",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 790,
+        "y": 800,
+        "wires": [
+            [
+                "7f9cd681.805ea"
+            ]
+        ]
+    },
+    {
+        "id": "b6440eba.a71e3",
+        "type": "delay",
+        "z": "163e312f.f48fdf",
+        "name": "Heating",
+        "pauseType": "delay",
+        "timeout": "10",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "x": 520,
+        "y": 700,
+        "wires": [
+            [
+                "d8ffdea2.3737e"
+            ]
+        ]
+    },
+    {
+        "id": "6620f9d2.f3db6",
+        "type": "comment",
+        "z": "163e312f.f48fdf",
+        "name": "mrCoffee state",
+        "info": "",
+        "x": 780,
+        "y": 660,
+        "wires": []
+    },
+    {
+        "id": "d8ffdea2.3737e",
+        "type": "switch",
+        "z": "163e312f.f48fdf",
+        "name": "if still on",
+        "property": "mrCoffee",
+        "propertyType": "flow",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "HEATING",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 660,
+        "y": 700,
+        "wires": [
+            [
+                "c2f0a687.88c29",
+                "f19b00a2.4fd4e"
+            ]
+        ]
+    },
+    {
+        "id": "8a6aaccf.daf26",
+        "type": "change",
+        "z": "163e312f.f48fdf",
+        "name": "heating",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"state\":\"ON\",\"brightness\":\"25\"}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 720,
+        "y": 860,
+        "wires": [
+            [
+                "58aef847.62fb68"
+            ]
+        ]
+    },
+    {
+        "id": "58aef847.62fb68",
+        "type": "switch",
+        "z": "163e312f.f48fdf",
+        "name": "skip if on",
+        "property": "coffeeLight",
+        "propertyType": "flow",
+        "rules": [
+            {
+                "t": "lt",
+                "v": "payload.brightness",
+                "vt": "msg"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 860,
+        "y": 860,
+        "wires": [
+            [
+                "50ec9803.99c0b8"
             ]
         ]
     }
