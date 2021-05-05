@@ -1011,7 +1011,9 @@
         "propertyType": "flow",
         "rules": [
             {
-                "t": "true"
+                "t": "neq",
+                "v": "0",
+                "vt": "num"
             }
         ],
         "checkall": "true",
@@ -1135,7 +1137,8 @@
                 "f8ec7d99.40e63"
             ],
             [
-                "46f79321.6d06cc"
+                "46f79321.6d06cc",
+                "4b2c116b.9da218"
             ]
         ]
     },
@@ -1156,7 +1159,7 @@
         "id": "bc2cf44b.b290c",
         "type": "change",
         "z": "163e312f.f48fdf",
-        "name": "gelb",
+        "name": "rot",
         "rules": [
             {
                 "t": "set",
@@ -1712,6 +1715,31 @@
         "wires": [
             [
                 "50ec9803.99c0b8"
+            ]
+        ]
+    },
+    {
+        "id": "4b2c116b.9da218",
+        "type": "switch",
+        "z": "163e312f.f48fdf",
+        "name": "if heating light",
+        "property": "coffeeLight",
+        "propertyType": "flow",
+        "rules": [
+            {
+                "t": "lt",
+                "v": "254",
+                "vt": "num"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 550,
+        "y": 900,
+        "wires": [
+            [
+                "a74e1e73.d2355"
             ]
         ]
     }
