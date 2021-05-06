@@ -673,8 +673,8 @@
         "qos": "2",
         "datatype": "auto",
         "broker": "f02afc5d.26a6",
-        "x": 130,
-        "y": 960,
+        "x": 110,
+        "y": 1040,
         "wires": [
             [
                 "d2f3e1fe.fe229"
@@ -1076,7 +1076,7 @@
         "datatype": "auto",
         "broker": "f02afc5d.26a6",
         "x": 80,
-        "y": 760,
+        "y": 840,
         "wires": [
             [
                 "4f65d200.6e944"
@@ -1742,5 +1742,168 @@
                 "a74e1e73.d2355"
             ]
         ]
+    },
+    {
+        "id": "72f2ee75.fd5b38",
+        "type": "comment",
+        "z": "163e312f.f48fdf",
+        "name": "Wohnzimmer",
+        "info": "",
+        "x": 130,
+        "y": 1220,
+        "wires": []
+    },
+    {
+        "id": "c8be486a.1a003",
+        "type": "mqtt in",
+        "z": "163e312f.f48fdf",
+        "name": "woscha",
+        "topic": "zigbee2mqtt/woscha",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "f02afc5d.26a6",
+        "x": 110,
+        "y": 1300,
+        "wires": [
+            [
+                "e81c0efa.4d3f48"
+            ]
+        ]
+    },
+    {
+        "id": "79a6d1da.10a49",
+        "type": "mqtt out",
+        "z": "163e312f.f48fdf",
+        "name": "bauleuchte",
+        "topic": "zigbee2mqtt/bauleuchte/set",
+        "qos": "",
+        "retain": "",
+        "broker": "f02afc5d.26a6",
+        "x": 880,
+        "y": 1300,
+        "wires": []
+    },
+    {
+        "id": "e81c0efa.4d3f48",
+        "type": "json",
+        "z": "163e312f.f48fdf",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 110,
+        "y": 1260,
+        "wires": [
+            [
+                "b72005db.0efe68"
+            ]
+        ]
+    },
+    {
+        "id": "7309b5dd.251194",
+        "type": "json",
+        "z": "163e312f.f48fdf",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 860,
+        "y": 1260,
+        "wires": [
+            [
+                "79a6d1da.10a49"
+            ]
+        ]
+    },
+    {
+        "id": "b72005db.0efe68",
+        "type": "change",
+        "z": "163e312f.f48fdf",
+        "name": "action2state",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload.state",
+                "pt": "msg",
+                "to": "payload.action",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 250,
+        "y": 1260,
+        "wires": [
+            [
+                "7309b5dd.251194",
+                "d9ebf63c.d4749"
+            ]
+        ]
+    },
+    {
+        "id": "8cdb066d.8aad38",
+        "type": "mqtt in",
+        "z": "163e312f.f48fdf",
+        "name": "schaltschwein",
+        "topic": "zigbee2mqtt/schaltschwein",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "f02afc5d.26a6",
+        "x": 130,
+        "y": 1380,
+        "wires": [
+            [
+                "e832c5c8.a05a68"
+            ]
+        ]
+    },
+    {
+        "id": "e832c5c8.a05a68",
+        "type": "json",
+        "z": "163e312f.f48fdf",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 110,
+        "y": 1340,
+        "wires": [
+            [
+                "7309b5dd.251194",
+                "d9ebf63c.d4749"
+            ]
+        ]
+    },
+    {
+        "id": "d9ebf63c.d4749",
+        "type": "json",
+        "z": "163e312f.f48fdf",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 870,
+        "y": 1360,
+        "wires": [
+            [
+                "da808e0b.4d52a"
+            ]
+        ]
+    },
+    {
+        "id": "da808e0b.4d52a",
+        "type": "mqtt out",
+        "z": "163e312f.f48fdf",
+        "name": "schaltschwein",
+        "topic": "zigbee2mqtt/schaltschwein/set",
+        "qos": "",
+        "retain": "",
+        "broker": "f02afc5d.26a6",
+        "x": 900,
+        "y": 1400,
+        "wires": []
     }
 ]
